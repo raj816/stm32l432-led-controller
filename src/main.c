@@ -96,7 +96,18 @@ int main(void) {
             case 'F':
                 gpio_blink(6);
                 break;
-
+            case 'P':
+                uart_send_string("PWM Demo - LED brightness levels");
+                gpio_pwm(GPIOB, PIN_3, 0);    // OFF
+                usleep(500000);
+                gpio_pwm(GPIOB, PIN_3, 25);   // DIM
+                usleep(500000);
+                gpio_pwm(GPIOB, PIN_3, 50);   // MEDIUM
+                usleep(500000);
+                gpio_pwm(GPIOB, PIN_3, 75);   // BRIGHT
+                usleep(500000);
+                gpio_pwm(GPIOB, PIN_3, 100);  // FULL
+                break;
             default:
                 uart_send_string("Unknown command!");
                 break;

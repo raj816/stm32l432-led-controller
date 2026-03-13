@@ -67,3 +67,32 @@ void gpio_blink(uint16_t times){
         printf("[GPIO] Blinking... (%d/%d)\n", i + 1, times);
     }
 }
+
+//function to simulate pwm by toggling pin with duty cycle
+void gpio_pwm(uint32_t port, uint8_t pin, uint8_t duty_cycle) {
+    if (duty_cycle > PWM_MAX) {
+        printf("[GPIO] ERROR: Invalid duty cycle %d\n", duty_cycle);
+        return;
+    }
+    printf("[GPIO] Simulating PWM on Port %s Pin %d with duty cycle %d%%\n",
+           (port == GPIOA) ? "A" : "B",
+           pin,
+           duty_cycle);
+
+    if(duty_cycle == PWM_MIN) {
+        gpio_write(port, pin, GPIO_LOW);
+        printf("[GPIO] PWM OFF (0%%)\n");
+    } else if (duty_cycle == PWM_MAX) {
+        gpio_write(port, pin, GPIO_HIGH);
+        printf("[GPIO] PWM ON (100%%)\n");
+    }  
+      else if(duty_cycle <30){
+        printf("[GPIO] PWM LOW (duty cycle < 30%%)\n");
+      }
+      else if(duty_cycle <70){
+        printf("[GPIO] PWM MEDIUM (duty cycle 30%% - 70%%)\n");
+      }
+      else {
+        printf("[GPIO] PWM HIGH (duty cycle > 70%%)\n");
+      }
+    }

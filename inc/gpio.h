@@ -21,6 +21,13 @@
 #define GPIO_OUTPUT 1
 #define GPIO_INPUT  0
 
+// PWM setiings for blinking
+#define PWM_MIN 0 // 0% duty cycle
+#define PWM_MAX 100 // 100% duty cycle
+
+//PWM Function prototypes
+void gpio_pwm(uint32_t port, uint8_t pin, uint8_t duty_cycle);
+
 // Function prototypes
 void gpio_init(uint32_t port, uint8_t pin, uint8_t direction);
 void gpio_write(uint32_t port, uint8_t pin, uint8_t state);
