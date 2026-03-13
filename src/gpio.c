@@ -58,3 +58,12 @@ uint8_t gpio_read(uint32_t port, uint8_t pin) {
     if (idx < 0) return 0;
     return gpio_state[idx][pin];
 }
+
+// function to blink LED N times
+void gpio_blink(uint16_t times){
+    for (uint16_t i = 0; i < times; i++) {
+        gpio_toggle(GPIOB, PIN_3);
+        // Simulate delay (in real code, use a timer or delay function)
+        printf("[GPIO] Blinking... (%d/%d)\n", i + 1, times);
+    }
+}

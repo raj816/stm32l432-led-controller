@@ -26,5 +26,5 @@ void gpio_init(uint32_t port, uint8_t pin, uint8_t direction);
 void gpio_write(uint32_t port, uint8_t pin, uint8_t state);
 void gpio_toggle(uint32_t port, uint8_t pin);
 uint8_t gpio_read(uint32_t port, uint8_t pin);
-
+void gpio_blink(uint16_t times);
 #endif // GPIO_H

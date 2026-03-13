@@ -92,6 +92,10 @@ int main(void) {
                 gpio_write(GPIOB, PIN_3, GPIO_LOW);
                 led_running = 0;
                 break;
+            
+            case 'F':
+                gpio_blink(6);
+                break;
 
             default:
                 uart_send_string("Unknown command!");
